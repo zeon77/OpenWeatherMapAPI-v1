@@ -1,6 +1,6 @@
 var button = document.querySelector('.button');
 var inputValue = document.querySelector('.inputValue');
-var name = document.querySelector('.name');
+var city = document.querySelector('.city');
 var desc = document.querySelector('.desc');
 var temp = document.querySelector('.temp');
 
@@ -22,7 +22,12 @@ button.addEventListener('click', function() {
       }
     })
     //.then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {
+      console.log(data);
+      city.innerHTML = data['name'];
+      desc.innerHTML = data['main']['temp'];
+      temp.innerHTML = data['weather'][0]['description'];
+    })
     .catch(err => {
       //Ha nem jött válasz:
       if (err.response == undefined) {
